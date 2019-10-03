@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,6 +11,7 @@ public class EnemyAI : MonoBehaviour
 
     NavMeshAgent navMeshAgent;
     float distanceToTarget = Mathf.Infinity;
+    bool isProvoked = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +23,37 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         distanceToTarget = Vector3.Distance(target.position, transform.position);
-        if (distanceToTarget <= chaseRange)
+
+        if (isProvoked)
         {
-            navMeshAgent.SetDestination(target.position);
+            EngageTarget();
         }
+        else if (distanceToTarget <= chaseRange)
+        {
+            isProvoked = true;
+        }
+    }
+
+    private void EngageTarget()
+    {
+        if (distanceToTarget > navMeshAgent.stoppingDistance)
+        {
+            ChaseTarget();
+        }
+        else if (distanceToTarget <= navMeshAgent.stoppingDistance)
+        {
+            AttackTarget();
+        }
+    }
+
+    private void AttackTarget()
+    {
+        Debug.Log("Attack");
+    }
+
+    private void ChaseTarget()
+    {
+        navMeshAgent.SetDestination(target.position);
     }
 
     private void OnDrawGizmos()
