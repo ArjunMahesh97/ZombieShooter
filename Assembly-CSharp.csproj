@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\EnemyAI.cs" />
+    <None Include="Assets\Asset Packs\Survival Carbine\Thanks To Michael.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/CODING/GameDev/projects/ZombieShooter/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
