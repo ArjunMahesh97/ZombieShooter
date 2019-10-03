@@ -1451,6 +1451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FPcamera: {fileID: 1010229573}
   range: 100
+  damage: 10
 --- !u!1001 &1880912012
 PrefabInstance:
   m_ObjectHideFlags: 0
