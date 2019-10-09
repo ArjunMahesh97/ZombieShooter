@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
-    PlayerHealth target;
-    [SerializeField] float damage = 40f;
+
+    [SerializeField] float hitPoints = 100f;
 
     // Start is called before the first frame update
     void Start()
     {
-        target = FindObjectOfType<PlayerHealth>();
+        
     }
 
     // Update is called once per frame
@@ -19,9 +19,12 @@ public class EnemyAttack : MonoBehaviour
         
     }
 
-    public void AttackHitEvent()
+    public void TakeDamage(float damage)
     {
-        if (target == null) return;
-        target.TakeDamage(damage);
+        hitPoints -= damage;
+        if (hitPoints <= 0)
+        {
+            Debug.Log("dead");
+        }
     }
 }
